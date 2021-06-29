@@ -1,5 +1,5 @@
 #Decision Tree- 
-#Regression: Predicitng Continuous Dependent Var Values.
+#Regression: Predicting Continuous Dependent Var Values.
 #Classification: Predicting Categorical Dependent Var Values.
 #Pruning:It is a technique used in determining the size of the tree.
 
@@ -7,7 +7,9 @@
 #install.packages("rpart.plot")
 library("rpart")
 library("rpart.plot")
+
 #Read dataset----
+
 data("iris")
 data_iris <- iris
 View(data_iris)
@@ -27,7 +29,6 @@ View(iris_test)
 #Regression Tree-
 rtree = rpart(Sepal.Length ~., data = iris_train, method = "anova")
 rpart.plot(rtree)
-print(ctree)
 
 #Predicitng:----
 #Regression Tree: Predicting the length of Sepal,
@@ -46,10 +47,10 @@ iris_test$Prediction_Species = predict(ctree, iris_test)
 View(iris_test)
 
 #Pruning----
-tree_ms3 = rpart(Species~., iris_train,control = rpart.control(minsplit = 3))
-tree_ms50 = rpart(Species~., iris_train, control = rpart.control(minsplit = 50))
+tree_ms3 = rpart(Sepal.Length~., iris_train,control = rpart.control(minsplit = 3))
+tree_ms100 = rpart(Sepal.Length~., iris_train, control = rpart.control(minsplit = 100))
 
 par(mfcol = c(1, 2))
 rpart.plot(tree_ms3, main = "minsplit=3")
-rpart.plot(tree_ms50, main = "minsplit=50")
+rpart.plot(tree_ms100, main = "minsplit=100")
 
